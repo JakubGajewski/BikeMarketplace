@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ROWERY</title>
+</head>
+<body style="text-align: center">
+<h1>
+    <br/>
+    ROWERY<br/>
+    FAST AND FURIOUS<br/>
+    <table>
+        <thead>
+        <tr>
+            <th>Model</th>
+            <th>Cena</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="thebike : ${bikes}">
+                <td th:text="${thebike.getModel()}"></td>
+                <td th:text="${thebike.getPrice()}"></td>
+                <td> <a th:href="'/bikes/'+${thebike.getId()}">KLIK!</a> </td>
+            </tr>
+        <button class="btn btn-primary" type="button" onclick="location.href='/bikes/addbikead';" >Dodaj nowy rower do sprzedaży</button>
+
+        </tbody>
+    </table>
+
+
+    <a href="/">POWRÓT DO STRONY GŁÓWNEJ</a>
+
+</h1>
+</body>
+</html>

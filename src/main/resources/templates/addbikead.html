@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj rower</title>
+</head>
+<body style="text-align: center">
+    <form style="width: 100%" th:action="@{/bikes/addbikead}" method="post" th:object="${bikeForm}">
+        Model: <input maxlength="100" type="text" th:field="*{model}" placeholder="Model">
+        <br/>
+        Opis: <input maxlength="1000" type="text" th:field="*{description}" placeholder="Opis">
+        <br/>
+        Cena: <input maxlength="1000" type="number" th:field="*{price}" placeholder="Cena">
+        <br/>
+        <!-- Kategoria: <input maxlength="3" type="number" th:field="*{categoryId}" placeholder="Kategoria"> -->
+        <br/><br/>
+        <button type="submit">Dodaj ogłoszenie</button>
+    </form>
+</body>
+</html>

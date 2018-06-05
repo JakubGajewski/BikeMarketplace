@@ -80,5 +80,26 @@ public class UserController {
         System.out.println("zupa");
         System.out.println(password);
         return "redirect:/";
+
+
     }
+
+    @GetMapping("/userlist")
+    public String userlist(Model model){
+        model.addAttribute("users", userRepo.findAll());
+        model.addAttribute("currentUser", userService.getCurrentUser());
+        return "userlist";
+    }
+
+    @GetMapping("/delete/userlist/{id}")
+    public String deletePost(@PathVariable("id") int id){
+        if (userService.getCurrentUser().getType().equals("admin")){
+            userRepo.delete(userRepo.getOneById(id));
+        }
+        return "redirect:/userlist";
+    }
+
+
+
+    //todo: walidacja, czy powtórzone jest hasło jest takie samo
 }

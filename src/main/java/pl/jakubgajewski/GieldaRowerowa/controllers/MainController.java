@@ -84,8 +84,10 @@ public class MainController {
     //zmienić ze stringa admin na enuma admin
     @GetMapping("/delete/bikes/{id}")
     public String deletePost(@PathVariable("id") int id){
-        bikeRepo.delete(bikeRepo.getOneById(id));
-        return "redirect:/";
+        if (userService.getCurrentUser().getType().equals("admin")){
+            bikeRepo.delete(bikeRepo.getOneById(id));
+        }
+        return "redirect:/bikes";
     }
 
 
@@ -115,4 +117,7 @@ public class MainController {
     }
 
 
-}
+
+
+    }
+

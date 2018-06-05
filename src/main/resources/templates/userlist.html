@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body style="text-align: center">
+<h1>
+    <br/>
+    ROWERY<br/>
+    FAST AND FURIOUS<br/>
+    <table>
+        <thead>
+        <tr>
+            <th>Model</th>
+            <th>Cena</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <!--<td th:text="${user.getId()}"></td>-->
+            <td th:text="${user.getLogin()}"></td>
+            <td th:text="${user.getType()}"></td>
+            <td><a color=red th:if="${currentUser.getType().toString() == 'admin'}" th:if="${user.getType().toString() != 'admin'}" th:href="@{/delete/userlist/{userId}(userId=${user.getId()})}">Usuń drania!</a></td>
+        </tr>
+
+
+
+        </tbody>
+    </table>
+    <a href="/">POWRÓT DO STRONY GŁÓWNEJ</a>
+</h1>
+</body>
+</html>

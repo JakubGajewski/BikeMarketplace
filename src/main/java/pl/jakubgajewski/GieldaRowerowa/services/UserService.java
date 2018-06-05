@@ -19,8 +19,9 @@ public class UserService {
     private boolean isLogged;
     private UserModel currentUser;
 
+    //todo - zmienić na guestA!!
     public void setAsGuestByDefault () {
-        UserForm userForm = new UserForm(1, "Gość", "", "guest");
+        UserForm userForm = new UserForm(1, "Gość", "Gość", "admin");
         currentUser = new UserModel(userForm);
         }
 

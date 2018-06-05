@@ -1,5 +1,6 @@
 package pl.jakubgajewski.GieldaRowerowa.controllers;
 
+import org.hibernate.usertype.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,24 +36,25 @@ public class MainController {
 
     @GetMapping("/")
     public String dashboard(){
-        System.out.println("aj di userservice: " + userService.getId());
         return "dashboard";
     }
 
     @GetMapping("/bikes")
     public String bikes(Model model){
-        System.out.println("aj di userservice: " + userService.getId());
         model.addAttribute("bikes", bikeRepo.findAll());
         return "bikes";
     }
 
+    //TODO: odnośnik thymeleafowy, aby skasować ogłoszenie, jak się jest adminem
+
     @GetMapping("/bikes/{id}")
     public String oneBike (@PathVariable("id") int id,
                            Model model) {
-        BikeModel bikeFromAd = bikeRepo.getOneById(id);
-        model.addAttribute("bike", bikeFromAd);
-        UserModel advertiser = userRepo.getOneById(bikeFromAd.getUser());
-        model.addAttribute("user", advertiser);
+        BikeModel bike = bikeRepo.getOneById(id);
+        model.addAttribute("bike", bike);
+        UserModel advertiser = userRepo.getOneById(bike.getUser());
+        model.addAttribute("advertiser", advertiser);
+        model.addAttribute("currentUser", userService.getCurrentUser());
         return "bikead";
     }
 
@@ -71,12 +73,21 @@ public class MainController {
     )
     {
         BikeModel bikeModel = new BikeModel(bikeForm);
-        bikeModel.setUser(userService.getId());
-        System.out.println("dodaje ogłoszenie user o aj di: " +userService.getId());
+        bikeModel.setUser(userService.getCurrentUser().getId());
+        System.out.println("dodaje ogłoszenie user o aj di: " + userService.getCurrentUser().getId());
         bikeRepo.save(bikeModel);
      //   model.addAttribute("bikes", bikeRepo.findAll());
         return "redirect:/bikes";
     }
+
+
+    //zmienić ze stringa admin na enuma admin
+    @GetMapping("/delete/bikes/{id}")
+    public String deletePost(@PathVariable("id") int id){
+        bikeRepo.delete(bikeRepo.getOneById(id));
+        return "redirect:/";
+    }
+
 
     @GetMapping("/parts")
     public String parts(){

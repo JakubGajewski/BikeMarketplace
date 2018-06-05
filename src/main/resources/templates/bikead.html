@@ -10,6 +10,15 @@
     <h1 th:text="${bike.getDescription()}"></h1>
     <h1 th:text="${bike.getPrice()}"></h1>
     <h1 th:text="${bike.getPrice()}"></h1>
-    <h1 th:text="${user.getLogin()}"></h1>
+    <h1 th:text="${advertiser.getLogin()}"></h1>
+    <!-- <button th:if="${currentUser.getType().toString() == 'admin'}" th:href="'">USUŃ OGŁOSZENIE</button> -->
+    <!-- <button class="btn btn-primary" type="button" th:onclick="location.th:href='/delete/' + ${bike.getId()}';" >Usuń</button>-->
+
+
+    <!--<a href="details.html" th:href="@{/order/{orderId}/details(orderId=${o.id})}">view</a>-->
+    <a href="dashboard.html" th:href="@{/delete/bikes/{bikeId}(bikeId=${bike.getId()})}">view</a>
+
+
+
 </body>
 </html>

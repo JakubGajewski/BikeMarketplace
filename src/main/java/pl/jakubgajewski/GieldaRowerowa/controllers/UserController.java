@@ -11,6 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import pl.jakubgajewski.GieldaRowerowa.services.UserService;
 
+import javax.annotation.PostConstruct;
+import java.util.Arrays;
+
 @Controller
 public class UserController {
 
@@ -40,8 +43,8 @@ public class UserController {
         boolean exist = userRepo.existsByLoginAndPassword(login, password);
         if (exist) {
             userService.setLogged(true);
-            userService.setId(userRepo.getOneByLogin(login).getId());
-            System.out.println("Zalogowano usera o aj di: " + userService.getId());
+            userService.setCurrentUser(userRepo.getOneByLogin(login));
+            System.out.println("Zalogowano usera o aj di: " + userService.getCurrentUser().getId());
             return "dashboard";
         }
         model.addAttribute("info", "Dane logowania niepoprawne");

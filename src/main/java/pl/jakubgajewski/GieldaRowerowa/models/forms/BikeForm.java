@@ -6,8 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Data
-@Setter
-@Getter
 @NoArgsConstructor
 public class BikeForm {
     private int id;

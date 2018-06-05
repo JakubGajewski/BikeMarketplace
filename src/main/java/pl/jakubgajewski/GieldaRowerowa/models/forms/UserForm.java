@@ -1,14 +1,10 @@
 package pl.jakubgajewski.GieldaRowerowa.models.forms;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Data
-@Setter
-@Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class UserForm {
     private int id;
     private String login;

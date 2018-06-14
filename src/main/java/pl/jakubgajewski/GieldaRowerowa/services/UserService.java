@@ -1,6 +1,5 @@
 package pl.jakubgajewski.GieldaRowerowa.services;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Scope;
@@ -20,14 +19,14 @@ public class UserService {
     private UserModel currentUser;
 
     //todo - zmienić na guestA!!
-    public void setAsGuestByDefault () {
-        UserForm userForm = new UserForm(1, "Gość", "Gość", "admin");
+    public void setAsGuest() {
+        UserForm userForm = new UserForm(1, "Guest", "Guest", "admin");
         currentUser = new UserModel(userForm);
         }
 
     @PostConstruct
     public void init() {
-        setAsGuestByDefault();
+        setAsGuest();
     }
 }
 

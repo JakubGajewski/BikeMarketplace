@@ -4,10 +4,7 @@ import org.hibernate.usertype.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.jakubgajewski.GieldaRowerowa.models.BikeModel;
 import pl.jakubgajewski.GieldaRowerowa.models.UserModel;
 import pl.jakubgajewski.GieldaRowerowa.models.forms.BikeForm;
@@ -35,7 +32,8 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String dashboard(){
+    public String dashboard(Model model) {
+        model.addAttribute("userLogin", userService.getCurrentUser().getLogin());
         return "dashboard";
     }
 
@@ -115,9 +113,5 @@ public class MainController {
     public String newAd(){
         return "newad";
     }
-
-
-
-
-    }
+}
 

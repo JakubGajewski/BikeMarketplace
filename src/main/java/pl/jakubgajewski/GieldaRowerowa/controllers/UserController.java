@@ -3,16 +3,14 @@ package pl.jakubgajewski.GieldaRowerowa.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import pl.jakubgajewski.GieldaRowerowa.models.BikeModel;
 import pl.jakubgajewski.GieldaRowerowa.models.UserModel;
 import pl.jakubgajewski.GieldaRowerowa.models.forms.UserForm;
+import pl.jakubgajewski.GieldaRowerowa.models.repositories.BikeRepo;
 import pl.jakubgajewski.GieldaRowerowa.models.repositories.UserRepo;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import pl.jakubgajewski.GieldaRowerowa.services.UserService;
 
-import javax.annotation.PostConstruct;
-import java.util.Arrays;
 
 @Controller
 public class UserController {
@@ -21,10 +19,14 @@ public class UserController {
     UserRepo userRepo;
 
     final
+    BikeRepo bikeRepo;
+
+    final
     UserService userService;
 
     @Autowired
-    public UserController (UserRepo userRepo, UserService userService) {
+    public UserController (BikeRepo bikeRepo, UserRepo userRepo, UserService userService) {
+        this.bikeRepo = bikeRepo;
         this.userRepo = userRepo;
         this.userService = userService;
     }
@@ -38,17 +40,19 @@ public class UserController {
     public String loginPost(@RequestParam("login") String login,
                             @RequestParam ("password") String password,
                             Model model){
-            //jeśli jest ten model - spring wie, że chcemy wysłać danę do templatki i pozwala
-        // na ich wysyłkę; potrzebny przez to "info"
-        boolean exist = userRepo.existsByLoginAndPassword(login, password);
-        if (exist) {
+        if (userRepo.existsByLoginAndPassword(login, password)) {
             userService.setLogged(true);
             userService.setCurrentUser(userRepo.getOneByLogin(login));
-            System.out.println("Zalogowano usera o aj di: " + userService.getCurrentUser().getId());
             return "dashboard";
         }
         model.addAttribute("info", "Dane logowania niepoprawne");
         return "login";
+    }
+//TODO: Podpiąć do templatek
+    @GetMapping("/logout")
+    public String logout(){
+        userService.setAsGuest();
+        return "dashboard";
     }
 
     @GetMapping("/register")
@@ -61,27 +65,26 @@ public class UserController {
     @PostMapping("/register")
     public String registerPost(@RequestParam("login") String login,
                             @RequestParam ("password") String password,
-                            @RequestParam ("repeatPassword") String repeatPassword
-    ){
-
-                               //Model model - często tu bywa, ale po co?
+                            @RequestParam ("repeatPassword") String repeatPassword,
+                            Model model)
+    {
         UserForm userForm = new UserForm();
         //TODO: sprwadzić, czy już nie zajęty
-        if (password.equals(repeatPassword)) {
+        if (!userRepo.existsByLogin(login) && password.equals(repeatPassword)) {
             userForm.setLogin(login);
             userForm.setPassword(password);
             userForm.setType("regular");
             UserModel userModel = new UserModel(userForm);
             userRepo.save(userModel);
-            System.out.println("DOBRZE!");
-
+            userService.setCurrentUser(userModel);
+            userService.setLogged(true);
+            return "redirect:/";
+        } else if (userRepo.existsByLogin(login)) {
+            model.addAttribute("info", "Wybrany login jest już zajęty");
+            return "register";
         }
-        //TODO: info czy się powiodło; info że login jest zajęty; walidacja hasła
-        System.out.println("zupa");
-        System.out.println(password);
-        return "redirect:/";
-
-
+        model.addAttribute("info", "Błędne powtórzenie hasła");
+        return "register";
     }
 
     @GetMapping("/userlist")
@@ -95,6 +98,7 @@ public class UserController {
     public String deletePost(@PathVariable("id") int id){
         if (userService.getCurrentUser().getType().equals("admin")){
             userRepo.delete(userRepo.getOneById(id));
+            bikeRepo.delete(bikeRepo.findByUser(id));
         }
         return "redirect:/userlist";
     }

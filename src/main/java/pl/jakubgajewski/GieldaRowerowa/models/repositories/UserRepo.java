@@ -10,6 +10,7 @@ import java.util.Optional;
 public interface UserRepo extends CrudRepository <UserModel, Integer> {
     Optional<UserModel> findByLoginAndPassword(String login, String password);
     boolean existsByLoginAndPassword(String login, String password);
+    boolean existsByLogin(String login);
     UserModel getOneById(int id);
     UserModel getOneByLogin(String login);
 }

@@ -18,9 +18,7 @@
 </body>
 -->
 <body style="text-align: center">
-<center>
-    <h1 th:if="${info != null}" th:text="${info}"></h1>
-</center>
+<h1 th:if="${info != null}" th:text="${info}"></h1>
 <form style="width: 100%" th:action="@{/login}" method="post">
     Nazwa użytkownika: <input maxlength="100" type="text" th:name="login" placeholder="Nazwa użytkownika">
     <br/>
@@ -29,6 +27,6 @@
     <br/><br/>
     <button type="submit">Zaloguj</button>
 </form>
-<button type="buttont" onclick="location.href='/register'">Zarejestruj</button>
+<button type="buttont" onclick="location.href='/register'">Rejestracja</button>
 </body>
 </html>

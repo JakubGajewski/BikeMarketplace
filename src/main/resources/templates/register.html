@@ -18,6 +18,7 @@
 </body>
 -->
 <body style="text-align: center">
+<h1 th:if="${info != null}" th:text="${info}"></h1>
 <form style="width: 100%" th:action="@{/register}" method="post">
     Nazwa użytkownika: <input maxlength="100" type="text" th:name="login" placeholder="Nazwa użytkownika">
     <br/>
@@ -26,10 +27,10 @@
     Powtórz hasło: <input maxlength="1000" type="text" th:name="repeatPassword" placeholder="Powtórzenie hasła">
 
     <br/><br/>
-    <button type="submit">Zaloguj</button>
+    <button type="submit">Zarejestruj</button>
 </form>
 
-<button type="buttont" onclick="location.href='/login'">Zaloguj</button>
+<button type="buttont" onclick="location.href='/login'">Logowanie</button>
 
 </body>
 </html>

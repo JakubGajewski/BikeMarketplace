@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import pl.jakubgajewski.GieldaRowerowa.services.UserService;
 
+import javax.validation.Valid;
+
 
 @Controller
 public class UserController {
@@ -63,7 +65,7 @@ public class UserController {
     //todo: walidacja, czy powtórzone jest hasło jest takie samo
     //todo: login handler, podpisywanie wiadomości
     @PostMapping("/register")
-    public String registerPost(@RequestParam("login") String login,
+    public String registerPost(@Valid @RequestParam("login") String login,
                             @RequestParam ("password") String password,
                             @RequestParam ("repeatPassword") String repeatPassword,
                             Model model)

@@ -9,7 +9,6 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 public class UserForm {
     private int id;
-    @Size(min = 3, max = 20)
     private String login;
     private String password;
     private String type;

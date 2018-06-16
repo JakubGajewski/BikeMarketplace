@@ -7,15 +7,15 @@
     <title>GŁÓWNA</title>
 </head>
 <body style="text-align: center">
-<h1 th:if="${userLogin != null}" th:text="'Jesteś zalogowany jako: ' + ${userLogin}"></h1>
-<h1>
+<h3 th:text="'Jesteś zalogowany jako: ' + ${userLogin}"></h3>
+<h2>
     SUPER NOWA GIEŁDA ROWEROWA
     <br/>
     !!!KUPUJ BEZ RYZYKA!!!
     <br/><br/>
     <a href="/bikes">Rowery</a><br/>
     <a href="/parts">Części</a><br/>
-    <a href="/accesories">Akcesoria</a><br/>
+    <a href="/accessories">Akcesoria</a><br/>
     <a href="/clothes">Ubrania</a><br/>
     <a href="/userlist">Użytkownicy</a><br/>
 
@@ -23,6 +23,6 @@
     <button class="btn btn-primary" type="button" onclick="location.href='/login';" >Logowanie</button>
     <button class="btn btn-primary" type="button" onclick="location.href='/register';" >Rejestracja</button>
 
-</h1>
+</h2>
 </body>
 </html>

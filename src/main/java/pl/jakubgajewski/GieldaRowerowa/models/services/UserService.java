@@ -1,4 +1,4 @@
-package pl.jakubgajewski.GieldaRowerowa.services;
+package pl.jakubgajewski.GieldaRowerowa.models.services;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

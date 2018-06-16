@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AKCESORIA ROWEROWE</title>
+</head>
+<body style="text-align: center">
+<h1>
+    <br/>
+    AKCESORIA ROWEROWE<br/>
+    DZWONKI, LAMPKI, BŁOTNIKI I LICZNIKI<br/>
+    <table>
+        <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Cena</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="theaccessory : ${accessories}">
+            <td th:text="${theaccessory.getName()}"></td>
+            <td th:text="${theaccessory.getPrice()}"></td>
+            <td> <a th:href="'/accessories/'+${theaccessory.getId()}">KLIK!</a> </td>
+        </tr>
+        <button class="btn btn-primary" type="button" onclick="location.href='/accessories/addaccessoryad';" >Dodaj nowe akcesorium do sprzedaży</button>
+
+        </tbody>
+    </table>
+    <a href="/">POWRÓT DO STRONY GŁÓWNEJ</a>
+</h1>
+</body>
+</html>

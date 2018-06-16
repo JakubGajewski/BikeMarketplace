@@ -9,9 +9,9 @@ import pl.jakubgajewski.GieldaRowerowa.models.repositories.BikeRepo;
 import pl.jakubgajewski.GieldaRowerowa.models.repositories.UserRepo;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import pl.jakubgajewski.GieldaRowerowa.services.UserService;
+import pl.jakubgajewski.GieldaRowerowa.models.services.UserService;
 
-import javax.validation.Valid;
+import java.util.regex.Pattern;
 
 
 @Controller
@@ -25,6 +25,7 @@ public class UserController {
 
     final
     UserService userService;
+
 
     @Autowired
     public UserController (BikeRepo bikeRepo, UserRepo userRepo, UserService userService) {
@@ -65,28 +66,31 @@ public class UserController {
     //todo: walidacja, czy powtórzone jest hasło jest takie samo
     //todo: login handler, podpisywanie wiadomości
     @PostMapping("/register")
-    public String registerPost(@Valid @RequestParam("login") String login,
+    public String registerPost(@RequestParam("login") String login,
                             @RequestParam ("password") String password,
                             @RequestParam ("repeatPassword") String repeatPassword,
                             Model model)
     {
         UserForm userForm = new UserForm();
-        //TODO: sprwadzić, czy już nie zajęty
-        if (!userRepo.existsByLogin(login) && password.equals(repeatPassword)) {
-            userForm.setLogin(login);
-            userForm.setPassword(password);
-            userForm.setType("regular");
-            UserModel userModel = new UserModel(userForm);
-            userRepo.save(userModel);
-            userService.setCurrentUser(userModel);
-            userService.setLogged(true);
-            return "redirect:/";
-        } else if (userRepo.existsByLogin(login)) {
+        userForm.setLogin(login);
+        userForm.setPassword(password);
+        userForm.setType("regular");
+
+        if (userRepo.existsByLogin(login)) {
             model.addAttribute("info", "Wybrany login jest już zajęty");
             return "register";
+        } else if (!password.equals(repeatPassword)) {
+            model.addAttribute("info", "Błędne powtórzenie hasła");
+            return "register";
+        } else if (!Pattern.matches("[a-zA-Z]{3,20}", login)) {
+            model.addAttribute("info", "Login powinien składać się z samych polskich liter i mieć od 3 do 20 znaków");
+            return "register";
         }
-        model.addAttribute("info", "Błędne powtórzenie hasła");
-        return "register";
+        UserModel userModel = new UserModel(userForm);
+        userRepo.save(userModel);
+        userService.setCurrentUser(userModel);
+        userService.setLogged(true);
+        return "redirect:/";
     }
 
     @GetMapping("/userlist")
@@ -104,8 +108,4 @@ public class UserController {
         }
         return "redirect:/userlist";
     }
-
-
-
-    //todo: walidacja, czy powtórzone jest hasło jest takie samo
 }

@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Dodaj rower</title>
+    <title>Dodaj akcesorium</title>
 </head>
 <body style="text-align: center">
 <h1 th:if="${info != null}" th:text="${info}"></h1>
-    <form style="width: 100%" th:action="@{/bikes/addbikead}" method="post" th:object="${bikeForm}">
-        Model: <input maxlength="100" type="text" th:field="*{model}" placeholder="Model">
+    <form style="width: 100%" th:action="@{/accessories/addaccessoryad}" method="post" th:object="${accessoryForm}">
+        Model: <input maxlength="100" type="text" th:field="*{name}" placeholder="Nazwa">
         <br/>
         Opis: <input maxlength="1000" type="text" th:field="*{description}" placeholder="Opis">
         <br/>

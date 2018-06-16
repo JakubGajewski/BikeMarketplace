@@ -6,19 +6,19 @@
     <title>Bike Ad</title>
 </head>
 <body style="text-align: center">
-    <h1 th:text="'Model: ' +${bike.getModel()}"></h1>
-    <h1 th:text="'Opis: ' + ${bike.getDescription()}"></h1>
-    <h1 th:text="'Cena: ' + ${bike.getPrice()}"></h1>
+    <h1 th:text="'Nazwa: ' +${accessory.getName()}"></h1>
+    <h1 th:text="'Opis: ' + ${accessory.getDescription()}"></h1>
+    <h1 th:text="'Cena: ' + ${accessory.getPrice()}"></h1>
     <h1 th:text="'Wystawił: ' +${advertiser.getLogin()}"></h1>
     <!-- <button  th:href="'">USUŃ OGŁOSZENIE</button> -->
     <!-- <button class="btn btn-primary" type="button" th:onclick="location.th:href='/delete/' + ${bike.getId()}';" >Usuń</button>-->
 
 
     <!--<a href="details.html" th:href="@{/order/{orderId}/details(orderId=${o.id})}">view</a>-->
-    <a href="/bikes">POWRÓT DO LISTY ROWERÓW</a>
+    <a href="/accessories">POWRÓT DO LISTY AKCESORIÓW</a>
     <a href="/">POWRÓT DO STRONY GŁÓWNEJ</a>
 
-    <a color=red th:if="${currentUser.getType().toString() == 'admin'}" th:href="@{/delete/bikes/{bikeId}(bikeId=${bike.getId()})}">Usuń ogłoszenie</a>
+    <a color=red th:if="${currentUser.getType().toString() == 'admin'}" th:href="@{/delete/accessory/{accessoryId}(accesspryId=${accessory.getId()})}">Usuń ogłoszenie</a>
 
 
 

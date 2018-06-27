@@ -7,7 +7,7 @@
 - polskich znaków nie przyjmuje... walidacja? albo skonfigurować?
 - możliwość wysyłania wiadomości między użytkownikami
 - zrobić front-end, ogarnąć wygląd
-- szyfrowanie haseł
+- szyfrowanie haseł, zamiana String na char[]
 - typy rowerów, wyświetlanie po typie
 
 

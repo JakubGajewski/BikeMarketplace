@@ -8,7 +8,8 @@ All that data is stored at the server database.
 
 Technology stack:
 - Java 8
-- SpringBoot Framework (with default configuration)
+- Spring Boot Framework (with default configuration)
+- Maven
 - MySQL Database
 - Lombok library (annotations)
 - Thymeleaf (template engine, great alternative for JSP)

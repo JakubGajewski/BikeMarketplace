@@ -1,12 +1,11 @@
-package pl.jakubgajewski.GieldaRowerowa.models;
+package pl.jakubgajewski.BikeMarketplace.models;
 
 
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.jakubgajewski.GieldaRowerowa.models.forms.AccessoryForm;
-import pl.jakubgajewski.GieldaRowerowa.models.forms.BikeForm;
+import pl.jakubgajewski.BikeMarketplace.models.forms.AccessoryForm;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,12 +1,12 @@
-package pl.jakubgajewski.GieldaRowerowa.models.services;
+package pl.jakubgajewski.BikeMarketplace.models.services;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
-import pl.jakubgajewski.GieldaRowerowa.models.UserModel;
-import pl.jakubgajewski.GieldaRowerowa.models.forms.UserForm;
+import pl.jakubgajewski.BikeMarketplace.models.UserModel;
+import pl.jakubgajewski.BikeMarketplace.models.forms.UserForm;
 
 import javax.annotation.PostConstruct;
 

@@ -1,4 +1,4 @@
-package pl.jakubgajewski.GieldaRowerowa.controllers;
+package pl.jakubgajewski.BikeMarketplace.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,12 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import pl.jakubgajewski.GieldaRowerowa.models.AccessoryModel;
-import pl.jakubgajewski.GieldaRowerowa.models.UserModel;
-import pl.jakubgajewski.GieldaRowerowa.models.forms.AccessoryForm;
-import pl.jakubgajewski.GieldaRowerowa.models.repositories.AccessoryRepo;
-import pl.jakubgajewski.GieldaRowerowa.models.repositories.UserRepo;
-import pl.jakubgajewski.GieldaRowerowa.models.services.UserService;
+import pl.jakubgajewski.BikeMarketplace.models.AccessoryModel;
+import pl.jakubgajewski.BikeMarketplace.models.UserModel;
+import pl.jakubgajewski.BikeMarketplace.models.forms.AccessoryForm;
+import pl.jakubgajewski.BikeMarketplace.models.repositories.AccessoryRepo;
+import pl.jakubgajewski.BikeMarketplace.models.repositories.UserRepo;
+import pl.jakubgajewski.BikeMarketplace.models.services.UserService;
+
+//TODO: creat common interface for adding new announcements
+//delegate methods: description, price, model
 
 @Controller
 public class AccessoriesController {

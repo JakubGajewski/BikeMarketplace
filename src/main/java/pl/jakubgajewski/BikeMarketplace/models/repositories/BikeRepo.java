@@ -1,10 +1,8 @@
-package pl.jakubgajewski.GieldaRowerowa.models.repositories;
+package pl.jakubgajewski.BikeMarketplace.models.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import pl.jakubgajewski.GieldaRowerowa.models.BikeModel;
-import pl.jakubgajewski.GieldaRowerowa.models.UserModel;
-
+import pl.jakubgajewski.BikeMarketplace.models.BikeModel;
 import java.util.List;
 
 @Repository

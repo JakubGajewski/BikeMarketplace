@@ -1,16 +1,14 @@
-package pl.jakubgajewski.GieldaRowerowa.models.forms;
+package pl.jakubgajewski.BikeMarketplace.models.forms;
 
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Data
 @NoArgsConstructor
-public class BikeForm {
+public class AccessoryForm {
     private int id;
     private int user;
-    private String model;
+    private String name;
     private String description;
     private float price;
 }

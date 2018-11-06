@@ -1,4 +1,4 @@
-package pl.jakubgajewski.GieldaRowerowa;
+package pl.jakubgajewski.BikeMarketplace;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class GieldaRowerowaApplicationTests {
+public class BikeMarketplaceApplicationTests {
 
 	@Test
 	public void contextLoads() {

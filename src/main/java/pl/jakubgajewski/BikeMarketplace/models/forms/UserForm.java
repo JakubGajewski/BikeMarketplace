@@ -1,8 +1,6 @@
-package pl.jakubgajewski.GieldaRowerowa.models.forms;
+package pl.jakubgajewski.BikeMarketplace.models.forms;
 
 import lombok.*;
-
-import javax.validation.constraints.Size;
 
 @Data
 @NoArgsConstructor

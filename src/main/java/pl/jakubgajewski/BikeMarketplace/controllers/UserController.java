@@ -1,15 +1,15 @@
-package pl.jakubgajewski.GieldaRowerowa.controllers;
+package pl.jakubgajewski.BikeMarketplace.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import pl.jakubgajewski.GieldaRowerowa.models.UserModel;
-import pl.jakubgajewski.GieldaRowerowa.models.forms.UserForm;
-import pl.jakubgajewski.GieldaRowerowa.models.repositories.BikeRepo;
-import pl.jakubgajewski.GieldaRowerowa.models.repositories.UserRepo;
+import pl.jakubgajewski.BikeMarketplace.models.UserModel;
+import pl.jakubgajewski.BikeMarketplace.models.forms.UserForm;
+import pl.jakubgajewski.BikeMarketplace.models.repositories.BikeRepo;
+import pl.jakubgajewski.BikeMarketplace.models.repositories.UserRepo;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import pl.jakubgajewski.GieldaRowerowa.models.services.UserService;
+import pl.jakubgajewski.BikeMarketplace.models.services.UserService;
 
 import java.util.regex.Pattern;
 

@@ -15,16 +15,15 @@ Technology stack:
 - Thymeleaf (template engine, great alternative for JSP)
 - IDE IntelliJ Idea
 
-Architecture:
-- MVC
-
 This is a development version, there is a bunch of things to be done:
+- accessories and clothes modules
 - tests
 - password validation & encryption
 - regulations acceptance during register
 - adding pictures
 - sending messages between users
-- some nice front-end
+- front-end
+- some refactoring - extracting some common methods from controllers, renaming, etc
 
 
 
